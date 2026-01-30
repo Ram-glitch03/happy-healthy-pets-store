@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial | Happy & Healthy Pets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Floating Particles Animation -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span>🐾</span>
+                <span>Happy & Healthy Pets</span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: var(--color-success);">✓</span>
+                <span style="font-weight: 500;">Pedido en proceso</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Upsell Section -->
+    <section class="upsell-page">
+        <div class="container">
+            <div class="upsell-container">
+                <div class="upsell-badge">
+                    🎁 ¡ESPERA! Oferta Exclusiva Para Ti
+                </div>
+
+                <h1>Completa el cuidado de tu mascota con <span class="text-gradient">30% de descuento</span></h1>
+
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 24px;">
+                    Como agradecimiento por tu compra, te ofrecemos este producto complementario a un precio especial.
+                </p>
+
+                <div class="upsell-timer">
+                    <span>⏰</span>
+                    <span>Esta oferta expira en: </span>
+                    <strong id="timer">09:59</strong>
+                </div>
+
+                <div class="upsell-product">
+                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255b1?w=400&h=300&fit=crop&q=80"
+                        alt="Pack Completo">
+
+                    <h2>Pack Bienestar Completo</h2>
+                    <p style="max-width: 500px; margin: 0 auto;">
+                        Incluye <strong>Omega Skin +</strong> para un pelaje brillante + <strong>Digestive Pro</strong>
+                        para una digestión perfecta. ¡El combo ideal!
+                    </p>
+
+                    <div style="display: flex; justify-content: center; gap: 20px; margin: 24px 0; flex-wrap: wrap;">
+                        <div class="badge badge-success">✓ 2 Productos Premium</div>
+                        <div class="badge badge-success">✓ Envío Gratis</div>
+                        <div class="badge badge-success">✓ 30% Descuento</div>
+                    </div>
+
+                    <div class="upsell-price">
+                        <span class="price-original">$778</span>
+                        <span class="price-new">$545</span>
+                    </div>
+
+                    <p style="font-size: 0.95rem; color: var(--text-light);">
+                        Ahorras <strong style="color: var(--color-success);">$233</strong> solo hoy
+                    </p>
+                </div>
+
+                <div class="upsell-buttons">
+                    <a href="gracias.html" class="btn btn-success btn-lg btn-block" onclick="acceptUpsell()">
+                        ¡Sí! Agregar a mi pedido 🎉
+                    </a>
+                    <a href="gracias.html" class="skip-link">
+                        No gracias, continuar con mi pedido →
+                    </a>
+                </div>
+
+                <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; opacity: 0.7;">
+                    <span>🔒 Pago Seguro</span>
+                    <span>💯 Garantía 30 días</span>
+                    <span>🚚 Envío Gratis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Countdown timer
+        let timeLeft = 10 * 60; // 10 minutes
+        const timerEl = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = 'gracias.html';
+            }
+            timeLeft--;
+        }, 1000);
+
+        function acceptUpsell() {
+            // Add upsell to order
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ id: 'pack-bienestar', name: 'Pack Bienestar Completo', price: 545, qty: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('upsellAccepted', 'true');
+        }
+    </script>
+</body>
+
+</html>

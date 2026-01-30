@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Happy & Healthy Pets</title>
+    <meta name="description" content="Completa tu pedido de suplementos naturales para mascotas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Floating Particles Animation -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span>🐾</span>
+                <span>Happy & Healthy Pets</span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: var(--color-success);">🔒</span>
+                <span style="font-weight: 500;">Pago 100% Seguro</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-page">
+        <div class="container">
+            <div class="checkout-grid">
+                <!-- Form Section -->
+                <div class="checkout-form-section">
+                    <h2>📦 Información de Envío</h2>
+
+                    <form id="checkoutForm" action="upsell.html">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">Nombre *</label>
+                                <input type="text" id="firstName" class="form-input" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Apellido *</label>
+                                <input type="text" id="lastName" class="form-input" placeholder="Tu apellido" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" class="form-input" placeholder="tu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Teléfono *</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+52 (555) 123-4567" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="address">Dirección *</label>
+                            <input type="text" id="address" class="form-input" placeholder="Calle y número" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="city">Ciudad *</label>
+                                <input type="text" id="city" class="form-input" placeholder="Tu ciudad" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="zip">Código Postal *</label>
+                                <input type="text" id="zip" class="form-input" placeholder="12345" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="state">Estado *</label>
+                            <select id="state" class="form-input" required>
+                                <option value="">Selecciona tu estado</option>
+                                <option value="CDMX">Ciudad de México</option>
+                                <option value="JAL">Jalisco</option>
+                                <option value="NL">Nuevo León</option>
+                                <option value="PUE">Puebla</option>
+                                <option value="GTO">Guanajuato</option>
+                                <option value="QRO">Querétaro</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+
+                        <h2 style="margin-top: 40px;">💳 Método de Pago</h2>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+                            <label style="flex: 1; cursor: pointer;">
+                                <input type="radio" name="payment" value="card" checked style="display: none;">
+                                <div class="card"
+                                    style="padding: 20px; text-align: center; border: 2px solid var(--color-primary);">
+                                    <div style="font-size: 1.5rem; margin-bottom: 8px;">💳</div>
+                                    <span style="font-weight: 600;">Tarjeta</span>
+                                </div>
+                            </label>
+                            <label style="flex: 1; cursor: pointer;">
+                                <input type="radio" name="payment" value="oxxo" style="display: none;">
+                                <div class="card" style="padding: 20px; text-align: center;">
+                                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🏪</div>
+                                    <span style="font-weight: 600;">OXXO</span>
+                                </div>
+                            </label>
+                            <label style="flex: 1; cursor: pointer;">
+                                <input type="radio" name="payment" value="transfer" style="display: none;">
+                                <div class="card" style="padding: 20px; text-align: center;">
+                                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🏦</div>
+                                    <span style="font-weight: 600;">Transferencia</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="cardFields">
+                            <div class="form-group">
+                                <label class="form-label" for="cardNumber">Número de Tarjeta *</label>
+                                <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456"
+                                    maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="cardExpiry">Vencimiento *</label>
+                                    <input type="text" id="cardExpiry" class="form-input" placeholder="MM/AA"
+                                        maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="cardCvv">CVV *</label>
+                                    <input type="text" id="cardCvv" class="form-input" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 30px;">
+                            Completar Pedido 🎉
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3>🛒 Tu Pedido</h3>
+
+                    <div id="orderItems">
+                        <!-- Items will be populated by JS -->
+                    </div>
+
+                    <div class="order-totals">
+                        <div class="order-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0</span>
+                        </div>
+                        <div class="order-row">
+                            <span>Envío</span>
+                            <span id="shipping" style="color: var(--color-success);">Gratis</span>
+                        </div>
+                        <div class="order-row">
+                            <span>Descuento</span>
+                            <span id="discount" style="color: var(--color-success);">-$0</span>
+                        </div>
+                        <div class="order-row total">
+                            <span>Total</span>
+                            <span id="total" style="color: var(--color-primary);">$0</span>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 24px; padding: 16px; background: rgba(34, 197, 94, 0.1); border-radius: var(--radius-md); text-align: center;">
+                        <span style="color: var(--color-success); font-weight: 600;">✓ Garantía de satisfacción 30
+                            días</span>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <span>🔒</span>
+                            <span>SSL Seguro</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span>💳</span>
+                            <span>Pago Protegido</span>
+                        </div>
+                        <div class="trust-badge">
+                            <span>🚚</span>
+                            <span>Envío Gratis</span>
+                        </div>
+                    </div>
+
+                    <!-- Urgency -->
+                    <div
+                        style="margin-top: 24px; padding: 16px; background: rgba(245, 158, 11, 0.1); border-radius: var(--radius-md); text-align: center;">
+                        <span style="font-weight: 600; color: var(--color-warning);">⚡ 3 personas viendo esto
+                            ahora</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+    <script>
+        // Backend API URL - relative for production, localhost for dev
+        const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+
+        // Load cart and display items
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderItems = document.getElementById('orderItems');
+
+            if (cart.length === 0) {
+                orderItems.innerHTML = '<p style="text-align: center; color: var(--text-light); padding: 20px;">Tu carrito está vacío</p>';
+                document.getElementById('subtotal').textContent = '$0';
+                document.getElementById('shipping').textContent = '$99';
+                document.getElementById('discount').textContent = '$0';
+                document.getElementById('total').textContent = '$0';
+                return;
+            }
+
+            let subtotal = 0;
+            orderItems.innerHTML = cart.map(item => {
+                subtotal += item.price * item.qty;
+                return `
+                    <div class="order-item" style="display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid #f0f0f5;">
+                        <div class="order-item-image" style="flex-shrink: 0;">
+                            <span style="font-size: 2rem;">💊</span>
+                        </div>
+                        <div class="order-item-info" style="flex: 1; min-width: 0;">
+                            <div class="order-item-name" style="font-weight: 600; margin-bottom: 4px;">${item.name}</div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <button onclick="updateCartQty('${item.id}', -1)" style="width: 28px; height: 28px; border: 1px solid #ddd; background: #f5f5f5; border-radius: 6px; cursor: pointer; font-size: 1rem;">−</button>
+                                <span style="font-weight: 500; min-width: 20px; text-align: center;">${item.qty}</span>
+                                <button onclick="updateCartQty('${item.id}', 1)" style="width: 28px; height: 28px; border: 1px solid #ddd; background: #f5f5f5; border-radius: 6px; cursor: pointer; font-size: 1rem;">+</button>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="order-item-price" style="font-weight: 700; color: var(--color-primary);">$${item.price * item.qty}</div>
+                            <button onclick="removeFromCartAndRefresh('${item.id}')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.85rem; margin-top: 4px;">🗑️ Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Free shipping for: subtotal >= 500 OR test products (subtotal <= 15)
+            const isTestPurchase = subtotal <= 15;
+            const shipping = (subtotal >= 500 || isTestPurchase) ? 0 : 99;
+            const discount = subtotal >= 800 ? Math.round(subtotal * 0.1) : 0;
+            const total = subtotal + shipping - discount;
+
+            document.getElementById('subtotal').textContent = `$${subtotal}`;
+            document.getElementById('shipping').textContent = shipping === 0 ? 'Gratis' : `$${shipping}`;
+            document.getElementById('shipping').style.color = shipping === 0 ? 'var(--color-success)' : 'var(--text-dark)';
+            document.getElementById('discount').textContent = discount > 0 ? `-$${discount}` : '$0';
+            document.getElementById('total').textContent = `$${total}`;
+        }
+
+        // Update cart quantity
+        function updateCartQty(id, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+                updateCartCount();
+            }
+        }
+
+        // Remove from cart and refresh
+        function removeFromCartAndRefresh(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+        });
+
+        // Payment method selection (visual only - Stripe handles actual payment)
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('input[name="payment"]').forEach(r => {
+                    r.closest('label').querySelector('.card').style.borderColor = '#E5E5F0';
+                });
+                e.target.closest('label').querySelector('.card').style.borderColor = 'var(--color-primary)';
+
+                const cardFields = document.getElementById('cardFields');
+                if (cardFields) {
+                    cardFields.style.display = e.target.value === 'card' ? 'block' : 'none';
+                }
+            });
+        });
+
+        // Form submission - redirect to Stripe Checkout
+        document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '⏳ Procesando...';
+            submitBtn.disabled = true;
+
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                if (cart.length === 0) {
+                    alert('Tu carrito está vacío');
+                    return;
+                }
+
+                const customerInfo = {
+                    name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: `${document.getElementById('address').value}, ${document.getElementById('city').value}, ${document.getElementById('state').value} ${document.getElementById('zip').value}`
+                };
+
+                // Save customer info for thank you page
+                localStorage.setItem('customerInfo', JSON.stringify({
+                    ...customerInfo,
+                    orderNumber: 'HHP-' + Date.now().toString().slice(-8)
+                }));
+
+                // Create Stripe Checkout session
+                const response = await fetch(`${API_URL}/create-checkout-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        items: cart,
+                        customerInfo
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Error al crear la sesión de pago');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Error al procesar el pago. Por favor intenta de nuevo.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

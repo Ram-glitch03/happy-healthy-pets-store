@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Happy & Healthy Pets</title>
+    <meta name="description" content="Explora nuestra línea completa de suplementos naturales para perros y gatos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Floating Particles Animation -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span>🐾</span>
+                <span>Happy & Healthy Pets</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#beneficios">Beneficios</a></li>
+                <li><a href="productos.html" class="active">Productos</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+            </ul>
+            <a href="checkout.html" class="cart-btn" id="cartBtn">
+                🛒 Carrito
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Products Hero -->
+    <section style="padding: 140px 0 60px; background: linear-gradient(180deg, var(--bg-main) 0%, #DCFCE7 100%);">
+        <div class="container text-center">
+            <h1>Nuestros <span class="text-gradient">Productos</span></h1>
+            <p style="max-width: 600px; margin: 16px auto 0;">Suplementos naturales formulados por veterinarios para
+                cada necesidad de tu mascota.</p>
+        </div>
+    </section>
+
+    <!-- Products Filter & Grid -->
+    <section class="products">
+        <div class="container">
+            <div class="products-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="higado">🫀 Hígado</button>
+                <button class="filter-btn" data-filter="articulaciones">🦴 Articulaciones</button>
+                <button class="filter-btn" data-filter="piel">✨ Piel & Pelaje</button>
+                <button class="filter-btn" data-filter="sistema">🩺 Sistema</button>
+                <button class="filter-btn" data-filter="bienestar">💚 Bienestar</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+
+                <!-- 🧪 PRODUCTO DE PRUEBA - $10 PESOS (mínimo Stripe) -->
+                <div class="product-card" data-category="bienestar" style="border: 3px dashed #f59e0b;">
+                    <div class="product-image" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                        <span class="badge badge-warning product-badge">🧪 PRUEBA</span>
+                        <div
+                            style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem;">
+                            🎯</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Producto de Prueba</div>
+                        <h3 class="product-name">Test Stripe $10</h3>
+                        <p class="product-desc">Producto para probar pagos. Mínimo Stripe: $10 MXN</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(TEST)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price" style="color: #f59e0b;">$10</span>
+                            <button class="add-to-cart" style="background: #f59e0b;"
+                                onclick="addToCart('test-10', 'Test Stripe $10', 10)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Urinary+ 100 Tabs -->
+                <div class="product-card" data-category="sistema">
+                    <div class="product-image">
+                        <span class="badge badge-success product-badge">⭐ 4.6 | +100 vendidos</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_742697-MLM69316424912_052023-F.webp"
+                            alt="Urinary+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Sistema Urinario</div>
+                        <h3 class="product-name">Urinary +</h3>
+                        <p class="product-desc">Para perros y gatos. 100 pastillas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(100+)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$390 <span class="original">$450</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('urinary-100', 'Urinary + 100 Tab', 390)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hepatic+ 100 Tabs -->
+                <div class="product-card" data-category="higado">
+                    <div class="product-image">
+                        <span class="badge badge-warning product-badge">Popular</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_945953-MLM48972583193_012022-F.webp"
+                            alt="Hepatic+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Salud Hepática</div>
+                        <h3 class="product-name">Hepatic +</h3>
+                        <p class="product-desc">Suplemento perro hepático. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(85)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$395 <span class="original">$450</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('hepatic-100', 'Hepatic + 100 Tab', 395)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hepatic+ 30 Tabs -->
+                <div class="product-card" data-category="higado">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_945953-MLM48972583193_012022-F.webp"
+                            alt="Hepatic+ 30">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Salud Hepática</div>
+                        <h3 class="product-name">Hepatic +</h3>
+                        <p class="product-desc">Suplemento perro hepático. 30 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(42)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('hepatic-30', 'Hepatic + 30 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gymgo+ 100 Tabs (Ginkgo Biloba) -->
+                <div class="product-card" data-category="bienestar">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_604847-MLM48972583197_012022-F.webp"
+                            alt="Gymgo+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Circulación & Memoria</div>
+                        <h3 class="product-name">Gymgo +</h3>
+                        <p class="product-desc">Ginkgo Biloba para perros. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(68)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$390 <span class="original">$450</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('gymgo-100', 'Gymgo + 100 Tab', 390)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gymgo+ 30 Tabs -->
+                <div class="product-card" data-category="bienestar">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_604847-MLM48972583197_012022-F.webp"
+                            alt="Gymgo+ 30">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Circulación & Memoria</div>
+                        <h3 class="product-name">Gymgo +</h3>
+                        <p class="product-desc">Ginkgo Biloba para perros. 30 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(35)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('gymgo-30', 'Gymgo + 30 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Derma+ 60 Tabs -->
+                <div class="product-card" data-category="piel">
+                    <div class="product-image">
+                        <span class="badge badge-success product-badge">Más Vendido</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_863022-MLM48977316971_012022-F.webp"
+                            alt="Derma+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Piel & Pelaje</div>
+                        <h3 class="product-name">Derma +</h3>
+                        <p class="product-desc">Omega 3 para perro y gato. 60 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('derma-60', 'Derma + 60 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Derma+ 30 Tabs -->
+                <div class="product-card" data-category="piel">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_863022-MLM48977316971_012022-F.webp"
+                            alt="Derma+ 30">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Piel & Pelaje</div>
+                        <h3 class="product-name">Derma +</h3>
+                        <p class="product-desc">Omega 3 para perro y gato. 30 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('derma-30', 'Derma + 30 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cardiac+ 100 Tabs -->
+                <div class="product-card" data-category="sistema">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_670855-MLM48977316963_012022-F.webp"
+                            alt="Cardiac+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Salud Cardíaca</div>
+                        <h3 class="product-name">Cardiac +</h3>
+                        <p class="product-desc">Corazón perro y gato. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(72)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$370 <span class="original">$420</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('cardiac-100', 'Cardiac + 100 Tab', 370)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cardiac+ 60 Tabs -->
+                <div class="product-card" data-category="sistema">
+                    <div class="product-image">
+                        <span class="badge badge-primary product-badge">⭐ 5.0</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_670855-MLM48977316963_012022-F.webp"
+                            alt="Cardiac+ 60">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Salud Cardíaca</div>
+                        <h3 class="product-name">Cardiac +</h3>
+                        <p class="product-desc">Corazón perro y gato. 60 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(45)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('cardiac-60', 'Cardiac + 60 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calm+ 30 Tabs -->
+                <div class="product-card" data-category="bienestar">
+                    <div class="product-image">
+                        <span class="badge badge-warning product-badge">Anti-Estrés</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_944217-MLM48972583195_012022-F.webp"
+                            alt="Calm+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Ansiedad & Calma</div>
+                        <h3 class="product-name">Calm +</h3>
+                        <p class="product-desc">Para perro y gato. 30 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(98)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$310 <span class="original">$350</span></span>
+                            <button class="add-to-cart" onclick="addToCart('calm-30', 'Calm + 30 Tab', 310)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Power+ 60 Tabs (Multivitamínico) -->
+                <div class="product-card" data-category="bienestar">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_672654-MLM48977316965_012022-F.webp"
+                            alt="Power+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Multivitamínico</div>
+                        <h3 class="product-name">Power +</h3>
+                        <p class="product-desc">Multivitamínico para perros. 60 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(112)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('power-60', 'Power + 60 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bones+ 60 Tabs -->
+                <div class="product-card" data-category="articulaciones">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_652088-MLM48977316967_012022-F.webp"
+                            alt="Bones+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Huesos Fuertes</div>
+                        <h3 class="product-name">Bones +</h3>
+                        <p class="product-desc">Perro y gato huesos fuertes. 60 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(76)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$385 <span class="original">$430</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('bones-60', 'Bones + 60 Tab', 385)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobility+ 100 Tabs -->
+                <div class="product-card" data-category="articulaciones">
+                    <div class="product-image">
+                        <span class="badge badge-success product-badge">⭐ 4.9 | +50 vendidos</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_617019-MLM69316424920_052023-F.webp"
+                            alt="Mobility+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Movilidad</div>
+                        <h3 class="product-name">Mobility +</h3>
+                        <p class="product-desc">Para perro y gato. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(134)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$380 <span class="original">$440</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('mobility-100', 'Mobility + 100 Tab', 380)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artro+ 100 Tabs -->
+                <div class="product-card" data-category="articulaciones">
+                    <div class="product-image">
+                        <span class="badge badge-primary product-badge">⭐ 4.6 | +25 vendidos</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_929395-MLM48977316969_012022-F.webp"
+                            alt="Artro+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Articulaciones</div>
+                        <h3 class="product-name">Artro +</h3>
+                        <p class="product-desc">Articulaciones perro y gato. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$380 <span class="original">$430</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('artro-100', 'Artro + 100 Tab', 380)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glucosamine+ 100 Tabs -->
+                <div class="product-card" data-category="articulaciones">
+                    <div class="product-image">
+                        <span class="badge badge-warning product-badge">⭐ 4.5 | +5 vendidos</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_788116-MLM69316424914_052023-F.webp"
+                            alt="Glucosamine+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Glucosamina</div>
+                        <h3 class="product-name">Glucosamine +</h3>
+                        <p class="product-desc">Glucosamina perros y gatos. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(67)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$380 <span class="original">$430</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('glucosamine-100', 'Glucosamine + 100 Tab', 380)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alergy+ 100 Tabs -->
+                <div class="product-card" data-category="piel">
+                    <div class="product-image">
+                        <span class="badge badge-primary product-badge">⭐ 3.7</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_763339-MLM48972583183_012022-F.webp"
+                            alt="Alergy+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Alergias</div>
+                        <h3 class="product-name">Alergy +</h3>
+                        <p class="product-desc">Alergias perro y gato. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(48)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$410 <span class="original">$460</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('alergy-100', 'Alergy + 100 Tab', 410)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alergy+ 30 Tabs -->
+                <div class="product-card" data-category="piel">
+                    <div class="product-image">
+                        <span class="badge badge-success product-badge">⭐ 4.8</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_763339-MLM48972583183_012022-F.webp"
+                            alt="Alergy+ 30">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Alergias</div>
+                        <h3 class="product-name">Alergy +</h3>
+                        <p class="product-desc">Alergias perro y gato. 30 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(32)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('alergy-30', 'Alergy + 30 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bronqui+ 100 Tabs -->
+                <div class="product-card" data-category="sistema">
+                    <div class="product-image">
+                        <span class="badge badge-warning product-badge">⭐ 5.0</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_636254-MLM69316424916_052023-F.webp"
+                            alt="Bronqui+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Respiración</div>
+                        <h3 class="product-name">Bronqui +</h3>
+                        <p class="product-desc">Suplemento respiración perro. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(54)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$390 <span class="original">$440</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('bronqui-100', 'Bronqui + 100 Tab', 390)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision+ 100 Tabs -->
+                <div class="product-card" data-category="sistema">
+                    <div class="product-image">
+                        <span class="badge badge-success product-badge">⭐ 5.0 | +25 vendidos</span>
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_736619-MLM48972583187_012022-F.webp"
+                            alt="Vision+">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Salud Visual</div>
+                        <h3 class="product-name">Vision +</h3>
+                        <p class="product-desc">Perro y gato. 100 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(87)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$380 <span class="original">$430</span></span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('vision-100', 'Vision + 100 Tab', 380)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision+ 60 Tabs -->
+                <div class="product-card" data-category="sistema">
+                    <div class="product-image">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_736619-MLM48972583187_012022-F.webp"
+                            alt="Vision+ 60">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Salud Visual</div>
+                        <h3 class="product-name">Vision +</h3>
+                        <p class="product-desc">Perro y gato cataratas. 60 tabletas.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(45)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$300</span>
+                            <button class="add-to-cart"
+                                onclick="addToCart('vision-60', 'Vision + 60 Tab', 300)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Banner -->
+    <section style="padding: 60px 0; background: var(--bg-white);">
+        <div class="container">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🚚</div>
+                    <h4>Envío Gratis</h4>
+                    <p style="font-size: 0.95rem;">Llega gratis mañana</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">💳</div>
+                    <h4>3 MSI</h4>
+                    <p style="font-size: 0.95rem;">Sin intereses</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📦</div>
+                    <h4>Precio Mayoreo</h4>
+                    <p style="font-size: 0.95rem;">Llevando 2 o más</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">⭐</div>
+                    <h4>Exclusivo Negocios</h4>
+                    <p style="font-size: 0.95rem;">Vendedor certificado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="color: white;">
+                        <span>🐾</span>
+                        <span>Happy & Healthy Pets</span>
+                    </div>
+                    <p>Suplementos naturales para mascotas felices y saludables.</p>
+                </div>
+                <div>
+                    <h4>Productos</h4>
+                    <ul class="footer-links">
+                        <li><a href="productos.html">Todos</a></li>
+                        <li><a href="#">Para perros</a></li>
+                        <li><a href="#">Para gatos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Ayuda</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Envíos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Happy & Healthy Pets. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Filter products
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
