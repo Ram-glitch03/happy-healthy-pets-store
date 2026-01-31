@@ -1,0 +1,2 @@
+# No redirects - serve all files as-is
+# This file explicitly tells Netlify to serve static HTML files

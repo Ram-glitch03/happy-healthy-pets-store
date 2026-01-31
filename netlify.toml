@@ -1,4 +1,11 @@
+# Netlify configuration for static HTML site
 [build]
   publish = "."
-  command = "echo 'Static site - no build needed'"
-  ignore = "exit 0"
+  command = ""
+
+# Explicitly serve HTML files without any SPA fallback
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+
