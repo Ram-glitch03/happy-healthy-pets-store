@@ -1,6 +1,0 @@
-[build]
-  publish = "."
-  command = ""
-
-# No redirects needed for static HTML site
-
