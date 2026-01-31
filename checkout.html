@@ -215,8 +215,10 @@
 
     <script src="app.js"></script>
     <script>
-        // Backend API URL - relative for production, localhost for dev
-        const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+        // Backend API URL - Railway for production, localhost for dev
+        const API_URL = window.location.hostname === 'localhost'
+            ? 'http://localhost:3000'
+            : 'https://happy-healthy-pets-store.up.railway.app';
 
         // Load cart and display items
         function renderCart() {
