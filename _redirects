@@ -1,2 +1,14 @@
-# No redirects - serve all files as-is
-# This file explicitly tells Netlify to serve static HTML files
+# Rutas amigables (sin extensión .html)
+/productos    /productos.html    200
+/checkout     /checkout.html     200
+/upsell       /upsell.html       200
+/gracias      /gracias.html      200
+
+# Trailing slashes
+/productos/   /productos.html    200
+/checkout/    /checkout.html     200
+/upsell/      /upsell.html       200
+/gracias/     /gracias.html      200
+
+# Página 404 - mostrar página principal
+/*            /index.html        200
