@@ -14,7 +14,20 @@ function updateCartCount() {
     cartCountElements.forEach(el => {
         el.textContent = totalItems;
         el.style.display = totalItems > 0 ? 'flex' : 'none';
+
+        // Add pop animation
+        el.classList.remove('pop');
+        void el.offsetWidth; // Trigger reflow
+        el.classList.add('pop');
     });
+
+    // Animate cart button
+    const cartBtn = document.querySelector('.cart-btn');
+    if (cartBtn) {
+        cartBtn.classList.remove('bounce');
+        void cartBtn.offsetWidth;
+        cartBtn.classList.add('bounce');
+    }
 }
 
 // Add item to cart
@@ -30,8 +43,8 @@ function addToCart(id, name, price) {
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 
-    // Show feedback animation
-    showAddedFeedback();
+    // Show toast notification
+    showToast('success', '¡Agregado!', `${name} se añadió al carrito`);
 }
 
 // Remove item from cart
@@ -67,38 +80,34 @@ function getCartTotal() {
     return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 }
 
-// Show feedback when item added
-function showAddedFeedback() {
-    // Create toast notification
+// Toast Notification System
+function showToast(type, title, message) {
+    // Create container if doesn't exist
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+
     const toast = document.createElement('div');
-    toast.className = 'toast-notification';
+    toast.className = `toast ${type}`;
     toast.innerHTML = `
-        <span>✓</span>
-        <span>¡Agregado al carrito!</span>
-    `;
-    toast.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: var(--color-success);
-        color: white;
-        padding: 16px 24px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        z-index: 10000;
-        animation: slideIn 0.3s ease;
+        <span class="toast-icon">${type === 'success' ? '✓' : 'ℹ️'}</span>
+        <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">×</button>
     `;
 
-    document.body.appendChild(toast);
+    container.appendChild(toast);
 
+    // Auto remove after 3 seconds
     setTimeout(() => {
-        toast.style.animation = 'slideOut 0.3s ease forwards';
+        toast.classList.add('hiding');
         setTimeout(() => toast.remove(), 300);
-    }, 2000);
+    }, 3000);
 }
 
 // Smooth scroll for anchor links
@@ -132,88 +141,92 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
+// Scroll Reveal Animation
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('active');
         }
     });
-}, observerOptions);
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
 
-// Observe elements for animation
+// FAQ Accordion Functionality
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// Main initialization
 document.addEventListener('DOMContentLoaded', () => {
     // Update cart count on load
     updateCartCount();
 
-    // 🔴 CORRECCIÓN: Manejo de imágenes rotas con fallback elegante
+    // Initialize FAQ
+    initFAQ();
+
+    // Initialize scroll reveal for elements
+    document.querySelectorAll('.benefit-card, .product-card, .testimonial-card, .faq-item').forEach((el, index) => {
+        el.classList.add('reveal');
+        if (index < 6) {
+            el.classList.add(`stagger-${(index % 6) + 1}`);
+        }
+        revealObserver.observe(el);
+    });
+
+    // Reveal section headers
+    document.querySelectorAll('.section-header').forEach(el => {
+        el.classList.add('reveal');
+        revealObserver.observe(el);
+    });
+
+    // Handle broken images with fallback
     document.querySelectorAll('.product-image img').forEach(img => {
-        // Fallback si la imagen falla
         img.onerror = function () {
             this.style.opacity = '0';
             this.parentElement.classList.add('image-error');
         };
 
-        // Si la imagen ya cargó pero está rota
         if (img.complete && img.naturalHeight === 0) {
             img.style.opacity = '0';
             img.parentElement.classList.add('image-error');
         }
     });
 
-    // 🚀 MEJORA: Feedback visual mejorado en botones add-to-cart
+    // Enhanced add-to-cart button feedback
     document.querySelectorAll('.add-to-cart').forEach(btn => {
         btn.addEventListener('click', function (e) {
-            // Efecto visual de confirmación
             this.style.transform = 'scale(0.85) rotate(180deg)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 200);
 
-            // Añadir clase de éxito temporal
             this.classList.add('added');
             setTimeout(() => {
                 this.classList.remove('added');
             }, 1000);
         });
     });
-
-    // Animate cards on scroll (desactivar animación inicial del JS si se maneja por CSS)
-    // Las animaciones ahora se manejan por CSS con animation-delay
 });
-
-// Add animation keyframes
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
 
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
@@ -236,3 +249,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 console.log('🐾 Happy & Healthy Pets - Funnel loaded successfully!');
+
