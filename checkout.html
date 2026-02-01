@@ -215,10 +215,10 @@
 
     <script src="app.js"></script>
     <script>
-        // Backend API URL - Railway for production, localhost for dev
+        // Backend API URL - Vercel for production, localhost for dev
         const API_URL = window.location.hostname === 'localhost'
             ? 'http://localhost:3000'
-            : 'https://happy-healthy-pets-store.up.railway.app';
+            : window.location.origin; // Use same Vercel domain for API
 
         // Load cart and display items
         function renderCart() {
